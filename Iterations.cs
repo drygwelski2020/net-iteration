@@ -26,9 +26,10 @@ namespace DotnetIteration
         //
         public static IEnumerable<string> Yelling(List<string> words)
         {
-            throw new System.NotImplementedException();
+            var newList = words.Select(word => word.ToUpper());
+            return newList;
+            //throw new System.NotImplementedException();
         }
-
 
         // 
         // 2) Complete the method named `Double` that takes an list of
@@ -37,9 +38,10 @@ namespace DotnetIteration
         // 
         public static IEnumerable<int> Double(List<int> numbers)
         {
-            throw new System.NotImplementedException();
+            var square = numbers.Select(x => x * x);
+            return square;
+            //throw new System.NotImplementedException();
         }
-
 
         // 
         // 3) Complete the method `StringyIndexes` that takes an list of
@@ -49,9 +51,13 @@ namespace DotnetIteration
         // 
         public static IEnumerable<string> StringyIndexes(List<string> data)
         {
+            string newVal = " is at index ";
+            for (var index = 0; index < data.Count; ++index)
+            {
+                data.Join(data[index], newVal, index);
+            }
             throw new System.NotImplementedException();
         }
-
 
         // 
         // 4) Complete the method OnlyTheEvenSurvive that accepts an list of
@@ -59,9 +65,10 @@ namespace DotnetIteration
         // 
         public static IEnumerable<int> OnlyTheEvenSurvive(List<int> data)
         {
-            throw new System.NotImplementedException();
+            var evensOnly = data.Where((data, index) => data % 2 != 0);
+            return evensOnly;
+            //throw new System.NotImplementedException();
         }
-
 
         // 
         // 5) Complete the method OnlyTheEvenIndexedSurvive that accepts an
@@ -70,9 +77,10 @@ namespace DotnetIteration
         // 
         public static IEnumerable<int> OnlyTheEvenIndexedSurvive(List<int> data)
         {
-            throw new System.NotImplementedException();
+            var evenIndexes = data.Where((data, index) => index % 2 != 0);
+            return evenIndexes;
+            //throw new System.NotImplementedException();
         }
-
 
         // 
         // 6) Complete the method BestMoviesOfTheYear that accepts an list of
@@ -92,16 +100,16 @@ namespace DotnetIteration
             throw new System.NotImplementedException();
         }
 
-
         // 
         // 7) Complete the method EveryoneIsOdd that accepts an list of
         //    numbers and returns true if every element of the list is odd.
         // 
         public static bool EveryoneIsOdd(List<int> data)
         {
-            throw new System.NotImplementedException();
+            var oddsOnly = data.Any(data => data % 2 == 0);
+            return oddsOnly;
+            //throw new System.NotImplementedException();
         }
-
 
         // 
         // 8) Complete the method FindTheNeedle that accepts an list of
@@ -110,9 +118,10 @@ namespace DotnetIteration
         // 
         public static string FindTheNeedle(List<string> data)
         {
-            throw new System.NotImplementedException();
+            var foundNeedle = data.First(x => x == "needle");
+            return foundNeedle;
+            //throw new System.NotImplementedException();
         }
-
 
         // 
         // 9) Complete the method FindTheNeedleIndex that accepts an list of
@@ -121,9 +130,13 @@ namespace DotnetIteration
         // 
         public static int FindTheNeedleIndex(List<string> data)
         {
-            throw new System.NotImplementedException();
+            var index = data.Select((value, index) => new { value, index = index + 1 })
+                 .Where(x => x.value == "needle")
+                 .Select(x => x.index)
+                 .FirstOrDefault() - 1;
+            return index;
+            //throw new System.NotImplementedException();
         }
-
 
         // 
         // 10) Complete the method SomeoneToLove that accepts an list of
@@ -132,7 +145,9 @@ namespace DotnetIteration
         // 
         public static bool SomeoneToLove(List<string> data)
         {
-            throw new System.NotImplementedException();
+            var fourChars = data.Any(x => x.Length == 4);
+            return fourChars;
+            //throw new System.NotImplementedException();
         }
     }
 }
